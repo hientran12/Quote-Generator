@@ -11,8 +11,8 @@ function pickAQuote() {
     const index = Math.floor(Math.random() * results.length);
     const quote = results[index];
 
-    //applie long-quote css when text is longer than 50 letters
-    if (quote.text.length > 50) {
+    //applie long-quote css when text is longer than 100 letters
+    if (quote.text.length > 100) {
         quoteTxt.classList.add('long-quote');
     } else {
         quoteTxt.classList.remove('long-quote');
@@ -47,5 +47,7 @@ function tweetQuote() {
 
 // Event Listener
 twitterBtn.addEventListener('click', tweetQuote);
+newQuoteBtn.addEventListener('click', pickAQuote);
+
 // On Load
 getQuotes();
