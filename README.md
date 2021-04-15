@@ -1,4 +1,4 @@
-#Quote Generator
+# Quote Generator
 ## Introduction
 Quote Generator is one of 20 JS Projects in ZTM Code Camp. The Database is 1000+ quotes from a quotes generator API (https://type.fit/api/quotes)
 ## Functions
