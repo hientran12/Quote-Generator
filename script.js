@@ -18,7 +18,7 @@ function pickAQuote() {
         quoteTxt.classList.remove('long-quote');
     }
     quoteTxt.textContent = quote.text;
-    
+
     // check if author is empty
     if (!quote.author) {
         authorTxt.textContent = 'Anonymous';
@@ -40,5 +40,12 @@ async function getQuotes() {
     }
 }
 
+function tweetQuote() {
+    const twitterURL = `https://twitter.com/intent/tweet?text=${quoteTxt.textContent} - ${authorTxt.textContent}`;
+    window.open(twitterURL, '_blank');
+}
+
+// Event Listener
+twitterBtn.addEventListener('click', tweetQuote);
 // On Load
 getQuotes();
