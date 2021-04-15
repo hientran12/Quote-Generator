@@ -3,10 +3,22 @@ let quoteTxt = document.getElementById('quote');
 let authorTxt = document.getElementById('author');
 let twitterBtn = document.getElementById('twitter');
 let newQuoteBtn = document.getElementById('new-quote');
+let loader = document.getElementById('loader');
 
 let apiQuotes = []
 
+function loading(){
+    loader.hidden = false;
+    quotesContainer.hidden = true;
+}
+
+function complete(){
+    loader.hidden = true;
+    quotesContainer.hidden = false;
+}
+
 function pickAQuote() {
+    loading();
     const results = apiQuotes;
     const index = Math.floor(Math.random() * results.length);
     const quote = results[index];
@@ -25,12 +37,13 @@ function pickAQuote() {
     } else {
         authorTxt.textContent = quote.author;
     }
-
+    complete();
 }
 
 async function getQuotes() {
     const apiURL = 'https://type.fit/api/quotes';
     try {
+        loading();
         const response = await fetch(apiURL);
         apiQuotes = await response.json();
         pickAQuote();
