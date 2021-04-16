@@ -7,18 +7,18 @@ let loader = document.getElementById('loader');
 
 let apiQuotes = []
 
-function loading(){
+function showLoader(){
     loader.hidden = false;
     quotesContainer.hidden = true;
 }
 
-function complete(){
+function hideLoader(){
     loader.hidden = true;
     quotesContainer.hidden = false;
 }
 
 function pickAQuote() {
-    loading();
+    showLoader();
     const results = apiQuotes;
     const index = Math.floor(Math.random() * results.length);
     const quote = results[index];
@@ -37,13 +37,13 @@ function pickAQuote() {
     } else {
         authorTxt.textContent = quote.author;
     }
-    complete();
+    hideLoader();
 }
 
 async function getQuotes() {
     const apiURL = 'https://type.fit/api/quotes';
     try {
-        loading();
+        showLoader();
         const response = await fetch(apiURL);
         apiQuotes = await response.json();
         pickAQuote();
